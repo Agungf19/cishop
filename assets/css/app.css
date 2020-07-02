@@ -1,0 +1,69 @@
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@media (min-width: 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+
+/* Show it is fixed to the top */
+body {
+	min-height: 75rem;
+	padding-top: 4.5rem;
+}
+
+/* Content <main> */
+.isi_content {
+	max-width: max-content;
+}
+
+/* Margin Keterangan Produk */
+p {
+	margin-top: -10px;
+}
+
+/* Efek Hover */
+.mr_produk:hover {
+	box-shadow: 0px 0px 25px -8px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 0px 0px 25px -8px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 25px -8px rgba(0, 0, 0, 0.75);
+	transform: scale(1);
+}
+
+/* Efek Hover */
+.mr_login_register:hover {
+	box-shadow: 0px 15px 27px -10px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 0px 15px 27px -10px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 15px 27px -10px rgba(0, 0, 0, 0.75);
+	transform: scale(1);
+}
+
+/* Color gradient navbar */
+.color_navbar {
+	background-image: linear-gradient(135deg, #FDD819 10%, #E87205 100%);
+}
+
+/* Color gradient header */
+.color_header {
+	color: white;
+	background-image: linear-gradient(to left bottom, #fdd819, #fbbf00, #f7a500, #f18c00, #e87205);
+}
+
+/* Border header */
+.border_header {
+	border-color: #f9b100 !important
+}
+
+/* Shadow Card */
+.card {
+	box-shadow: 0px 15px 27px -10px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 0px 15px 27px -10px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 15px 27px -10px rgba(0, 0, 0, 0.75);
+}
