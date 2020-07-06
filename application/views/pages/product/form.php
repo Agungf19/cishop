@@ -1,8 +1,8 @@
 <main role="main" class="container">
 	<div class="row">
 		<div class="col-md-10 mx-auto">
-			<div class="card mb-3">
-				<div class="card-header">
+			<div class="card mb-3 card_shadow">
+				<div class="card-header color_header">
 					<span>Formulir Produk</span>
 				</div>
 				<div class="card-body">
@@ -31,7 +31,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="form-group col-md-4">
+						<div class="form-group col-md-3">
 							<label for="">Kategori Produk</label>
 							<div class="input-group mb-2">
 								<div class="input-group-prepend">
@@ -41,13 +41,13 @@
 							</div>
 							<?= form_error('id_category') ?>
 						</div>
-						<div class="form-group col-md-4">
+						<div class="form-group col-md-5">
 							<label for="">Slug</label>
 							<div class="input-group mb-2">
 								<div class="input-group-prepend">
 									<span class="input-group-text color_header"><i class="fas fa-link"></i></span>
 								</div>
-								<?= form_input('slug', $input->slug, ['class' => 'form-control', 'id' => 'slug', 'required' => true, 'readonly' => 'off']) ?>
+								<?= form_input('slug', $input->slug, ['class' => 'form-control', 'id' => 'slug', 'required' => true, 'readonly' => 'off', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => $input->slug]) ?>
 							</div>
 							<?= form_error('slug') ?>
 						</div>

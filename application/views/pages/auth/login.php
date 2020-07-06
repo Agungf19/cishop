@@ -2,7 +2,7 @@
 	<?php $this->load->view('layouts/_alert') ?>
 	<div class="row">
 		<div class="col-md-5 mx-auto">
-			<div class="card border_header mr_login_register">
+			<div class="card border_header card_shadow">
 				<div class="card-header color_header">
 					Formulir Login
 				</div>

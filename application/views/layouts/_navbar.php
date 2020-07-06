@@ -24,17 +24,55 @@
             <ul class="navbar-nav">
                 <!-- Jika sudah login Menu Cart akan muncul, jika belum login menu Cart ini tidak akan muncul -->
                 <?php if ($this->session->userdata('is_login')) : ?>
-                    <li class="nav-item">
-                        <a href="<?= base_url('cart') ?>" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Keranjang Belanja"><i class="fas fa-shopping-cart"></i> Cart (<?= getCart(); ?>)</a>
-                    </li>
+                    <div class="btn-group">
+                        <button type="button" class="btn dropdown-toggle text-white dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="<?= base_url("/cart") ?>" class="">
+                                <i class="fas fa-shopping-cart text-white"></i>
+                                <span class="badge badge-success"><?= getCart(); ?></span>
+                            </a>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="<?= base_url("/cart") ?>" class="text-center">Lihat Keranjang</a>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Produk</th>
+                                        <th class="text-center">Harga</th>
+                                        <th class="text-center">Qty</th>
+                                        <th class="text-center">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="font-size: 12px;">
+                                    <?php foreach ($content as $row) : ?>
+                                        <tr>
+                                            <td>
+                                                <p><img src="<?= $row->image ? base_url("/images/product/$row->image") : base_url('/images/product/default.png') ?>" alt="" height="30">
+                                                    <?= $row->product_title ?>
+                                                </p>
+                                            </td>
+                                            <td>Rp <?= number_format($row->price, 0, ',', '.') ?></td>
+                                            <td><?= $row->qty ?></td>
+                                            <td class="text-center">Rp<?= number_format($row->subtotal, 0, ',', '.') ?>,-</td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                    <tr>
+                                        <td colspan="3"><strong>Total:</strong></td>
+                                        <td class="text-center"><strong>Rp<?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 <?php endif ?>
+                &nbsp;
+
                 <!-- Jika belum login, maka menu ini akan muncul -->
                 <?php if (!$this->session->userdata('is_login')) : ?>
                     <li class="nav-item">
                         <a href="<?= base_url('/login') ?>" class="nav-link">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url('/register') ?>l" class="nav-link">Register</a>
+                        <a href="<?= base_url('/register') ?>" class="nav-link">Register</a>
                     </li>
                 <?php else : ?>
                     <div class="dropdown">

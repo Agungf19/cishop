@@ -1,8 +1,8 @@
 <main role="main" class="container">
 	<div class="row">
 		<div class="col-md-6 mx-auto">
-			<div class="card mb-3">
-				<div class="card-header">
+			<div class="card mb-3 card_shadow">
+				<div class="card-header color_header">
 					<span>Formulir Kategori</span>
 				</div>
 				<div class="card-body">

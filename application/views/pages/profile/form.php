@@ -4,8 +4,8 @@
 			<?php $this->load->view('layouts/_menu'); ?>
 		</div>
 		<div class="col-md-9">
-			<div class="card">
-				<div class="card-header">
+			<div class="card card_shadow">
+				<div class="card-header color_header">
 					Formulir Profile
 				</div>
 				<div class="card-body">

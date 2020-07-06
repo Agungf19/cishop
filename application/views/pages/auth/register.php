@@ -2,7 +2,7 @@
 	<?php $this->load->view('layouts/_alert') ?>
 	<div class="row">
 		<div class="col-md-8 mx-auto">
-			<div class="card border_header mr_login_register">
+			<div class="card border_header card_shadow">
 				<div class="card-header color_header">
 					Formulir Registrasi
 				</div>
@@ -53,8 +53,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="card-footer bg-warning">
-					<button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Register</button>
+				<div class="card-footer">
+					<button type="submit" class="btn btn-primary float-left"><i class="fas fa-sign-in-alt"></i> Register</button>
+					<span class="text-danger float-right font-weight-bold">Sudah punya akun ?&nbsp
+						<a href="<?= base_url('/login') ?>" class=" btn btn-info float-right"> Login Sekarang</a>
+					</span>
 					<?= form_close() ?>
 				</div>
 			</div>

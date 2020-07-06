@@ -1,5 +1,5 @@
-<div class="card mb-3">
-    <div class="card-header bg-warning">
+<div class="card mb-3 card_shadow">
+    <div class="card-header color_header">
         <i class="fas fa-bars"></i> MENU
     </div>
     <div class="list-group list-group-flush">

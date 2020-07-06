@@ -2,8 +2,8 @@
 	<?php $this->load->view('layouts/_alert') ?>
 	<div class="row">
 		<div class="col-md-10 mx-auto">
-			<div class="card mb-3">
-				<div class="card-header">
+			<div class="card mb-3 card_shadow">
+				<div class="card-header color_header">
 					<span>Produk</span>
 					<a href="<?= base_url('product/create') ?>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="bottom" title="Tambah Produk">
 						<i class="fas fa-plus-circle"></i> Tambah

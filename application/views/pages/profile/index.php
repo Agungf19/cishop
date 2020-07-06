@@ -5,8 +5,8 @@
 			<?php $this->load->view('layouts/_menu'); ?>
 		</div>
 		<div class="col-md-9">
-			<div class="card">
-				<div class="card-header bg-warning">
+			<div class="card card_shadow">
+				<div class="card-header color_header">
 					<i class="fas fa-id-card"></i> PROFILE USER
 				</div>
 				<div class="card-body">

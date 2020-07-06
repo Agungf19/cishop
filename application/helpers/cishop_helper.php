@@ -18,8 +18,15 @@ function getDropdownList($table, $columns)
 
 function getCategories()
 {
-	$CI		= &get_instance();
-	$query	= $CI->db->get('category')->result();
+	$CI = &get_instance();
+	$query = $CI->db->query('SELECT a.*,(SELECT COUNT(*) FROM product WHERE id_category = a.id) jumlah FROM category a')->result();
+	return $query;
+}
+
+function getProduct()
+{
+	$CI = &get_instance();
+	$query = $CI->db->query('SELECT a.*,(SELECT COUNT(*) FROM product WHERE id_category = a.id) jumlah FROM product a')->result();
 	return $query;
 }
 
