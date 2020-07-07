@@ -36,7 +36,8 @@ function getCart()
 	$userId	= $CI->session->userdata('id');
 
 	if ($userId) {
-		$query	= $CI->db->where('id_user', $userId)->count_all_results('cart');
+		// $query	= $CI->db->where('id_user', $userId)->count_all_results('cart');
+		$query	= $CI->db->select('*, COUNT(qty) as jumlah_cart')->from('cart')->get()->result();
 		return $query;
 	}
 

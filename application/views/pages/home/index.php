@@ -3,6 +3,31 @@
         <?php $this->load->view('layouts/_alert') ?>
         <div class="row">
 
+            <div class="col-md-2 bg-light">
+                <div class="row no-gutters">
+                    <div class="col-md-12">
+                        <div class="card card mb-3 card_shadow">
+                            <div class="card-header bg-warning" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                                <i class="fas fa-bars"></i> KATEGORI
+                                <span class="navbar-toggler-icon"></span>
+                            </div>
+                            <div class="list-group list-group-flush collapse navbar-collapse" id="navbarCollapse">
+                                <a href="<?= base_url('/') ?>" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-angle-right"></i> Semua Kategori
+                                    <span class="badge badge-primary float-right"><?= count(getProduct()) ?></span>
+                                </a>
+                                <?php foreach (getCategories() as $kategori) : ?>
+                                    <a href="<?= base_url("/shop/category/$kategori->slug") ?>" class="list-group-item list-group-item-action">
+                                        <i class="fas fa-angle-right"></i> <?= $kategori->title ?>
+                                        <span class="badge badge-primary float-right"><?= $kategori->jumlah ?></span>
+                                    </a>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-10">
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -109,36 +134,11 @@
                 </div>
             </div>
 
-            <div class="col-md-2 bg-light">
-                <div class="row no-gutters">
-                    <div class="col-md-12">
-                        <div class="card card mb-3 card_shadow">
-                            <div class="card-header bg-warning" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                                <i class="fas fa-bars"></i> KATEGORI
-                                <span class="navbar-toggler-icon"></span>
-                            </div>
-                            <div class="list-group list-group-flush collapse navbar-collapse" id="navbarCollapse">
-                                <a href="<?= base_url('/') ?>" class="list-group-item list-group-item-action">
-                                    <i class="fas fa-angle-right"></i> Semua Kategori
-                                    <span class="badge badge-primary float-right"><?= count(getProduct()) ?></span>
-                                </a>
-                                <?php foreach (getCategories() as $category) : ?>
-                                    <a href="<?= base_url("/shop/category/$category->slug") ?>" class="list-group-item list-group-item-action">
-                                        <i class="fas fa-angle-right"></i> <?= $category->title ?>
-                                        <span class="badge badge-primary float-right"><?= $category->jumlah ?></span>
-                                    </a>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="card-footer bg-warning">
-            <nav aria-label="Page navigation example">
-                <?= $pagination ?>
-            </nav>
         </div>
     </div>
 </main>
+<div class="card-footer bg-warning">
+    <nav aria-label="Page navigation example">
+        <?= $pagination ?>
+    </nav>
+</div>

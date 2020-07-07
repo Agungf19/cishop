@@ -28,12 +28,17 @@
                         <button type="button" class="btn dropdown-toggle text-white dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <a href="<?= base_url("/cart") ?>" class="">
                                 <i class="fas fa-shopping-cart text-white"></i>
-                                <span class="badge badge-success"><?= getCart(); ?></span>
+                                <span class="badge badge-info">
+                                    <!-- <?= getCart() ?> -->
+                                    <?php foreach (getCart() as $cart) : ?>
+                                        <?= $cart->jumlah_cart ?>
+                                    <?php endforeach ?>
+                                </span>
                             </a>
                         </button>
                         <div class="dropdown-menu">
-                            <a href="<?= base_url("/cart") ?>" class="text-center">Lihat Keranjang</a>
                             <table class="table table-hover">
+                                <a href="<?= base_url("/cart") ?>" class="text-center">Lihat Keranjang</a>
                                 <thead>
                                     <tr>
                                         <th>Produk</th>
