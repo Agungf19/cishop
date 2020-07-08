@@ -48,7 +48,8 @@ class Cart extends MY_Controller
 	public function add()
 	{
 		/**
-		 * !$_POST = jika fieldnya kosong / tidak ada POST, maka akan muncul error
+		 * !$_POST = jika fieldnya kosong / tidak ada POST, maka akan muncul error kemudian akan di redirect ke halaman semula
+		 * || jika kuantitas dari produk yang di order kurang dari 1 (0) maka akan muncul error
 		 */
 		if (!$_POST || $this->input->post('qty') < 1) {
 			$this->session->set_flashdata('error', 'Kuantitas produk tidak boleh kosong!');
@@ -101,6 +102,10 @@ class Cart extends MY_Controller
 
 	public function update($id)
 	{
+		/**
+		 * Jika tidak di akses dengan methode POST dan input field QTY kurang dari 1
+		 * Maka akan muncul error dan di redirect ke halaman asal
+		 */
 		if (!$_POST || $this->input->post('qty') < 1) {
 			$this->session->set_flashdata('error', 'Kuantitas produk tidak boleh kosong!');
 			redirect(base_url('cart/index'));
@@ -108,20 +113,30 @@ class Cart extends MY_Controller
 
 		$data['content'] 	= $this->cart->where('id', $id)->first();
 
+		/**
+		 * Jika tidak ada data content
+		 * Maka akan muncul warning serta akan di redirect ke cart/index
+		 */
 		if (!$data['content']) {
 			$this->session->set_flashdata('warning', 'Data tidak ditemukan!');
 			redirect(base_url('cart/index'));
 		}
 
+		/**
+		 * Variable data input, pada saat berhasil mendapatkan data content
+		 */
 		$data['input']		= (object) $this->input->post(null, true);
 		$this->cart->table	= 'product';
 		$product			= $this->cart->where('id', $data['content']->id_product)->first();
-		$subtotal			= $data['input']->qty * $product->price;
+		$subtotal			= $data['input']->qty * $product->price; // qty x harga produk
 		$cart				= [
-			'qty'		=> $data['input']->qty,
-			'subtotal'	=> $subtotal
+			'qty'      => $data['input']->qty,
+			'subtotal' => $subtotal
 		];
 
+		/**
+		 * Update data ke database berdasarkan id user dana id cart
+		 */
 		$this->cart->table	= 'cart';
 		if ($this->cart->where('id', $id)->update($cart)) {
 			$this->session->set_flashdata('success', 'Produk berhasil ditambahkan!');
@@ -134,15 +149,24 @@ class Cart extends MY_Controller
 
 	public function delete($id)
 	{
+		/**
+		 * Artinya tidak bisa di akses dengan menulis url jika url datanya/id nya tidak ada
+		 */
 		if (!$_POST) {
 			redirect(base_url('cart/index'));
 		}
 
+		/**
+		 * jika menulis url (Methode POST) dan pada cart tidak ada id nya maka akan muncul warning
+		 */
 		if (!$this->cart->where('id', $id)->first()) {
 			$this->session->set_flashdata('warning', 'Maaf! Data tidak ditemukan.');
 			redirect(base_url('cart/index'));
 		}
 
+		/**
+		 * Jika id nya ada maka berhasil di delete
+		 */
 		if ($this->cart->where('id', $id)->delete()) {
 			$this->session->set_flashdata('success', 'Data sudah berhasil dihapus!');
 		} else {

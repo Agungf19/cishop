@@ -18,6 +18,7 @@ class Home extends MY_Controller
             [
                 'product.id',
                 'product.title AS product_title',
+                'product.merk',
                 'product.description',
                 'product.image',
                 'product.price',

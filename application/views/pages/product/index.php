@@ -32,6 +32,7 @@
 								<th scope="col">#</th>
 								<th scope="col">Produk</th>
 								<th scope="col">Kategori</th>
+								<th scope="col">Merk</th>
 								<th scope="col">Harga</th>
 								<th scope="col">Stock</th>
 								<th scope="col">Action</th>
@@ -50,6 +51,9 @@
 									</td>
 									<td>
 										<span class="badge badge-primary"><i class="fas fa-tags"></i> <?= $row->category_title ?></span>
+									</td>
+									<td>
+										<span class="badge badge-success"><i class="fas fa-box-open"></i> <?= $row->merk ?></span>
 									</td>
 									<td>Rp<?= number_format($row->price, 0, ',', '.') ?>,-</td>
 									<td><?= $row->is_available ? '<span class="badge badge-success badge-pill">Tersedia</span>' : '<span class="badge badge-danger badge-pill">Kosong</span>' ?></td>

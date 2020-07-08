@@ -99,11 +99,25 @@ p {
 	opacity: 1;
 }
 
-.text_product {
-	background-color: #4CAF50;
+.desc_product {
+	background-image: linear-gradient(to right bottom, #fa742b, #fe8c25, #ffa222, #ffb926, #fccf31);
 	color: white;
 	font-size: 16px;
-	padding: 16px 32px;
+	padding: 10px 10px;
+	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+.text_product {
+	margin-right: 0.15rem;
+	margin-left: -0.9rem;
+}
+
+.title_product {
+	background-image: linear-gradient(to right bottom, #fa742b, #fe8c25, #ffa222, #ffb926, #fccf31);
+	color: white;
+	font-size: 16px;
+	padding: 10px 10px;
+	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* tooltips */
@@ -158,4 +172,12 @@ p {
 	transform: translate(-50%, -50%) rotate(45deg);
 	background-color: #00ceff;
 	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* garis bawah produk */
+.hr_product {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }

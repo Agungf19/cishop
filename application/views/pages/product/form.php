@@ -9,7 +9,7 @@
 					<?= form_open_multipart($form_action, ['method' => 'POST']) ?>
 					<?= isset($input->id) ? form_hidden('id', $input->id) : '' ?>
 					<div class="row">
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-5">
 							<label for="">Nama Produk</label>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
@@ -19,7 +19,7 @@
 							</div>
 							<?= form_error('title') ?>
 						</div>
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-3">
 							<label for="">Harga Produk</label>
 							<div class="input-group mb-2">
 								<div class="input-group-prepend">
@@ -28,6 +28,16 @@
 								<?= form_input(['type' => 'number', 'name' => 'price', 'value' => $input->price, 'class' => 'form-control', 'required' => true, 'autocomplete' => 'off']) ?>
 							</div>
 							<?= form_error('price') ?>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="">Merk Produk</label>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text color_header"><i class="fas fa-box-open"></i></span>
+								</div>
+								<?= form_input('merk', $input->merk, ['class' => 'form-control', 'id' => 'merk', 'required' => true, 'autofocus' => true, 'autocomplete' => 'off']) ?>
+							</div>
+							<?= form_error('merk') ?>
 						</div>
 					</div>
 					<div class="row">

@@ -29,10 +29,7 @@
                             <a href="<?= base_url("/cart") ?>" class="">
                                 <i class="fas fa-shopping-cart text-white"></i>
                                 <span class="badge badge-info">
-                                    <!-- <?= getCart() ?> -->
-                                    <?php foreach (getCart() as $cart) : ?>
-                                        <?= $cart->jumlah_cart ?>
-                                    <?php endforeach ?>
+                                    <?= getCart() ?>
                                 </span>
                             </a>
                         </button>
@@ -41,7 +38,7 @@
                                 <a href="<?= base_url("/cart") ?>" class="text-center">Lihat Keranjang</a>
                                 <thead>
                                     <tr>
-                                        <th>Produk</th>
+                                        <th>Nama</th>
                                         <th class="text-center">Harga</th>
                                         <th class="text-center">Qty</th>
                                         <th class="text-center">Subtotal</th>
@@ -52,17 +49,18 @@
                                         <tr>
                                             <td>
                                                 <p><img src="<?= $row->image ? base_url("/images/product/$row->image") : base_url('/images/product/default.png') ?>" alt="" height="30">
-                                                    <?= $row->product_title ?>
                                                 </p>
                                             </td>
-                                            <td>Rp <?= number_format($row->price, 0, ',', '.') ?></td>
+                                            <td>Rp<?= number_format($row->price, 0, ',', '.') ?></td>
                                             <td><?= $row->qty ?></td>
                                             <td class="text-center">Rp<?= number_format($row->subtotal, 0, ',', '.') ?>,-</td>
                                         </tr>
                                     <?php endforeach ?>
-                                    <tr>
+                                    <tr class="bg-warning">
                                         <td colspan="3"><strong>Total:</strong></td>
-                                        <td class="text-center"><strong>Rp<?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-</strong></td>
+                                        <td class="text-center">
+                                            <strong>Rp<?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-</strong>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

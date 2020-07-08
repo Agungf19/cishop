@@ -16,9 +16,10 @@ class Profile_model extends MY_Model
 	public function getDefaultValues()
 	{
 		return [
-			'name' 		=> '',
-			'email'		=> '',
-			'image'		=> ''
+			'name'   => '',
+			'alamat' => '',
+			'email'  => '',
+			'image'  => ''
 		];
 	}
 
@@ -31,6 +32,11 @@ class Profile_model extends MY_Model
 			[
 				'field'	=> 'name',
 				'label'	=> 'Nama',
+				'rules'	=> 'trim|required'
+			],
+			[
+				'field'	=> 'alamat',
+				'label'	=> 'Alamat',
 				'rules'	=> 'trim|required'
 			],
 			[

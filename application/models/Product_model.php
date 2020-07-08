@@ -13,13 +13,14 @@ class Product_model extends MY_Model
 	public function getDefaultValues()
 	{
 		return [
-			'id_category'	=> '',
-			'slug'			=> '',
-			'title'			=> '',
-			'description'	=> '',
-			'price'			=> '',
-			'is_available'	=> 1, // status produk tersedia
-			'image'			=> ''
+			'id_category'  => '',
+			'merk'         => '',
+			'slug'         => '',
+			'title'        => '',
+			'description'  => '',
+			'price'        => '',
+			'is_available' => 1,    // status produk tersedia
+			'image'        => ''
 		];
 	}
 
@@ -30,34 +31,39 @@ class Product_model extends MY_Model
 	{
 		$validationRules = [
 			[
-				'field'	=> 'id_category',
-				'label'	=> 'Kategori',
-				'rules'	=> 'required'
+				'field' => 'id_category',
+				'label' => 'Kategori',
+				'rules' => 'required'
 			],
 			[
-				'field'	=> 'slug',
-				'label'	=> 'Slug',
-				'rules'	=> 'trim|required|callback_unique_slug'
+				'field' => 'merk',
+				'label' => 'Merk',
+				'rules' => 'trim|required'
 			],
 			[
-				'field'	=> 'title',
-				'label'	=> 'Nama Produk',
-				'rules'	=> 'trim|required'
+				'field' => 'slug',
+				'label' => 'Slug',
+				'rules' => 'trim|required|callback_unique_slug'
 			],
 			[
-				'field'	=> 'description',
-				'label'	=> 'Deskripsi',
-				'rules'	=> 'trim|required'
+				'field' => 'title',
+				'label' => 'Nama Produk',
+				'rules' => 'trim|required'
 			],
 			[
-				'field'	=> 'price',
-				'label'	=> 'Harga',
-				'rules'	=> 'trim|required|numeric'
+				'field' => 'description',
+				'label' => 'Deskripsi',
+				'rules' => 'trim|required'
 			],
 			[
-				'field'	=> 'is_available',
-				'label'	=> 'Ketersediaan',
-				'rules'	=> 'required'
+				'field' => 'price',
+				'label' => 'Harga',
+				'rules' => 'trim|required|numeric'
+			],
+			[
+				'field' => 'is_available',
+				'label' => 'Ketersediaan',
+				'rules' => 'required'
 			],
 		];
 

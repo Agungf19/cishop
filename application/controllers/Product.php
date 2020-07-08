@@ -19,14 +19,17 @@ class Product extends MY_Controller
 		}
 	}
 
-
 	public function index($page = null)
 	{
 		$data['title']		= 'Admin: Produk';
 		$data['content']	= $this->product->select(
 			[
-				'product.id', 'product.title AS product_title', 'product.image',
-				'product.price', 'product.is_available',
+				'product.id',
+				'product.title AS product_title',
+				'product.merk',
+				'product.image',
+				'product.price',
+				'product.is_available',
 				'category.title AS category_title'
 			]
 		)
@@ -49,20 +52,25 @@ class Product extends MY_Controller
 		}
 
 		$keyword	= $this->session->userdata('keyword');
-		$data['title']		= 'Admin: Produk';
-		$data['content']	= $this->product->select(
+		$data['title']   = 'Admin: Produk';
+		$data['content'] = $this->product->select(
 			[
-				'product.id', 'product.title AS product_title', 'product.image',
-				'product.price', 'product.is_available',
+				'product.id',
+				'product.title AS product_title',
+				'product.merk',
+				'product.image',
+				'product.price',
+				'product.is_available',
 				'category.title AS category_title'
 			]
 		)
 			->join('category')
 			->like('product.title', $keyword)
 			->orLike('description', $keyword)
+			->orLike('merk', $keyword)
 			->paginate($page)
 			->get();
-		$data['total_rows']	= $this->product->like('product.title', $keyword)->orLike('description', $keyword)->count();
+		$data['total_rows']	= $this->product->like('product.title', $keyword)->orLike('description', $keyword)->orLike('merk', $keyword)->count();
 		$data['pagination']	= $this->product->makePagination(
 			base_url('product/search'),
 			3,

@@ -84,46 +84,52 @@
                 <h4 class="text-center font-weight-bold mb-3 text-warning">PRODUK TERBARU</h4>
                 <div class="row">
                     <?php foreach ($content as $row) : ?>
-                        <div class="col-md-3 col-sm-6">
+                        <div class="col-md-my_col col-sm-6">
                             <div class="card mb-3 mr_produk">
                                 <div class="container_product">
                                     <img style="width:120px;height:120px;" src="<?= $row->image ? base_url("/images/product/$row->image") : base_url("/images/product/no_image_prduct.png") ?>" alt="" class="card-img-top image_product">
                                     <div class="middle_product">
-                                        <p class="card-text text_product" style="font-size: 14px;"><?= $row->description ?></p>
+                                        <h5 class="title_product text-center hr_product"><?= $row->product_title ?></h5>
+                                        <p class="desc_product" style="font-size: 14px;"><?= $row->description ?></p>
                                     </div>
-                                    <a href="#" class="badge badge-primary"><i class="fas fa-tags"></i> <?= $row->category_title ?></a>
+                                    <a href="#" class="badge badge-primary float-left"><i class="fas fa-tags"></i> <?= $row->category_title ?></a>
+                                    <a href="#" class="badge badge-success float-right"><i class="fas fa-tags"></i> <?= $row->merk ?></a>
                                 </div>
                                 <div class="card-body">
 
                                     <div class="tooltips">
-                                        <h5 class="card-title"><?= substr($row->product_title, 0, 21) ?>...</h5>
+                                        <h5 class="card-title" style="font-size: 14px">
+                                            <?= substr_replace($row->product_title, '', 23) ?>
+                                        </h5>
                                         <div class="top">
                                             <span><?= $row->product_title ?></span>
                                             <i></i>
                                         </div>
                                     </div>
 
-                                    <p class="card-text text-danger"><strong>Rp<?= number_format($row->price, 0, ',', '.') ?></strong></p>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                    <p class="card-text text-danger text_product mb-0">
+                                        <strong>Rp<?= number_format($row->price, 0, ',', '.') ?></strong>
+                                    </p>
+                                    <span class="ml-4">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star-half-alt text-warning"></i>
+                                    </span>
                                 </div>
                                 <div class="card-footer">
                                     <form action="<?= base_url("/cart/add") ?>" method="POST">
                                         <input type="hidden" name="id_product" value="<?= $row->id ?>">
-                                        <div class="row">
-                                            <div class="input-group-append col-md-4">
-                                                <button class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Detail Produk">Detail</button>
-                                            </div>
-                                            <div class="input-group col-md-8">
-                                                <input type="number" name="qty" value="0" data-toggle="tooltip" data-placement="bottom" title="Masukan jumlah order" class="form-control">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Tambah Kedalam Keranjang">
-                                                        <i class="fas fa-cart-plus"></i>
-                                                    </button>
-                                                </div>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Detail Produk">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <input type="number" name="qty" value="0" data-toggle="tooltip" data-placement="bottom" title="Masukan jumlah order" class="form-control">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Tambah Kedalam Keranjang">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </form>
