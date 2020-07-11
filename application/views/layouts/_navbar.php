@@ -45,11 +45,11 @@
                                     </tr>
                                 </thead>
                                 <tbody style="font-size: 12px;">
-                                    <?php foreach ($content as $row) : ?>
+
+                                    <?php foreach ($_SESSION['cart']  as $key => $row) : ?>
                                         <tr>
                                             <td>
-                                                <p><img src="<?= $row->image ? base_url("/images/product/$row->image") : base_url('/images/product/default.png') ?>" alt="" height="30">
-                                                </p>
+                                                <p><img src="<?= $row->image ? base_url("/images/product/$row->image") : base_url('/images/product/default.png') ?>" alt="" height="30"></p>
                                             </td>
                                             <td>Rp<?= number_format($row->price, 0, ',', '.') ?></td>
                                             <td><?= $row->qty ?></td>
@@ -57,9 +57,9 @@
                                         </tr>
                                     <?php endforeach ?>
                                     <tr class="bg-warning">
-                                        <td colspan="3"><strong>Total:</strong></td>
-                                        <td class="text-center">
-                                            <strong>Rp<?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-</strong>
+                                        <td colspan="2"><strong>Total : </strong></td>
+                                        <td colspan="2" class="text-right">
+                                            <strong>Rp <?= number_format(array_sum(array_column($_SESSION['cart'], 'subtotal')), 0, ',', '.') ?>,-</strong>
                                         </td>
                                     </tr>
                                 </tbody>

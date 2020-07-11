@@ -18,7 +18,6 @@ class Category extends MY_Controller
 		}
 	}
 
-
 	public function index($page = null)
 	{
 		$data['title']		= 'Admin: Category';
@@ -42,11 +41,11 @@ class Category extends MY_Controller
 			redirect(base_url('category'));
 		}
 
-		$keyword	= $this->session->userdata('keyword');
-		$data['title']		= 'Admin: Category';
-		$data['content']	= $this->category->like('title', $keyword)->paginate($page)->get();
-		$data['total_rows']	= $this->category->like('title', $keyword)->count();
-		$data['pagination']	= $this->category->makePagination(
+		$keyword      = $this->session->userdata('keyword');
+		$data['title']      = 'Admin: Category';
+		$data['content']    = $this->category->like('title', $keyword)->paginate($page)->get();
+		$data['total_rows'] = $this->category->like('title', $keyword)->count();
+		$data['pagination'] = $this->category->makePagination(
 			base_url('category/search'),
 			3,
 			$data['total_rows']
@@ -72,9 +71,9 @@ class Category extends MY_Controller
 		 * Variable 2 = Jika akses page kategori dan inputan pada field ada yg error maka field yg tidak error tetap ada tidak hilang
 		 */
 		if (!$_POST) {
-			$input	= (object) $this->category->getDefaultValues(); // Variable 1
+			$input = (object) $this->category->getDefaultValues();  // Variable 1
 		} else {
-			$input	= (object) $this->input->post(null, true); // Variable 2
+			$input = (object) $this->input->post(null, true);  // Variable 2
 		}
 
 		/**
@@ -83,10 +82,10 @@ class Category extends MY_Controller
 		 * jika gagal akan di kembalikan di page form categori, dengan inputan pada filed tidak hilang
 		 */
 		if (!$this->category->validate()) {
-			$data['title']			= 'Tambah Kategori';
-			$data['input']			= $input;
-			$data['form_action']	= base_url('category/create'); // form action untuk mengarahkan ke dalam page form tambah kategori
-			$data['page']			= 'pages/category/form';
+			$data['title']       = 'Tambah Kategori';
+			$data['input']       = $input;
+			$data['form_action'] = base_url('category/create');  // form action untuk mengarahkan ke dalam page form tambah kategori
+			$data['page']        = 'pages/category/form';
 
 			$this->view($data);
 			return;
@@ -115,15 +114,15 @@ class Category extends MY_Controller
 		}
 
 		if (!$_POST) {
-			$data['input']	= $data['content'];
+			$data['input'] = $data['content'];
 		} else {
-			$data['input']	= (object) $this->input->post(null, true);
+			$data['input'] = (object) $this->input->post(null, true);
 		}
 
 		if (!$this->category->validate()) {
-			$data['title']			= 'Ubah Kategori';
-			$data['form_action']	= base_url("category/edit/$id");
-			$data['page']			= 'pages/category/form';
+			$data['title']       = 'Ubah Kategori';
+			$data['form_action'] = base_url("category/edit/$id");
+			$data['page']        = 'pages/category/form';
 
 			$this->view($data);
 			return;
@@ -169,8 +168,8 @@ class Category extends MY_Controller
 
 	public function unique_slug()
 	{
-		$slug		= $this->input->post('slug');
-		$id			= $this->input->post('id');
+		$slug = $this->input->post('slug');
+		$id   = $this->input->post('id');
 		/**
 		 * Apakah terdata suatu data di table category pada kolom Slug
 		 * sama dengan nilanya dalam varibale Slug
@@ -191,8 +190,8 @@ class Category extends MY_Controller
 
 	public function unique_category()
 	{
-		$title	= $this->input->post('title');
-		$id			= $this->input->post('id');
+		$title = $this->input->post('title');
+		$id    = $this->input->post('id');
 		/**
 		 * Apakah terdata suatu data di table category pada kolom Title
 		 * sama dengan nilanya dalam varibale title

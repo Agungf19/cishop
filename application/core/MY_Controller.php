@@ -12,8 +12,23 @@ class MY_Controller extends CI_Controller
 		if (file_exists(APPPATH . 'models/' . $model . '_model.php')) {
 			$this->load->model($model . '_model', $model, true);
 		}
-	}
 
+		$this->load->model('cart_model', 'cart', true);
+		$cart = $this->cart->select([
+			'cart.id',
+			'cart.qty',
+			'cart.subtotal',
+			'product.slug',
+			'product.title AS product_title',
+			'product.image',
+			'product.price'
+		])
+			->join('product')
+			->where('cart.id_user', $this->session->userdata('id'))
+			->get();
+
+		$this->session->set_userdata(['cart' => $cart]);
+	}
 	/**
 	 * Load view with default layouts
 	 *

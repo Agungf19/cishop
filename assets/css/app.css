@@ -181,3 +181,20 @@ p {
 	border: 0;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+/* css image profil = foto profil*/
+.img_profil {
+	border: 1px solid rgb(190, 44, 44);
+	border-radius: 4px;
+	padding: 5px;
+	width: 80%;
+	box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+/* Color gradient header User Profile*/
+.color_header_profile {
+	color: white;
+	border-radius: 40px;
+	padding: 7px;
+	background-image: linear-gradient(to left bottom, #fdd819, #fbbf00, #f7a500, #f18c00, #e87205);
+}

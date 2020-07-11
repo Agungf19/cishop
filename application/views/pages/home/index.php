@@ -87,7 +87,7 @@
                         <div class="col-md-my_col col-sm-6">
                             <div class="card mb-3 mr_produk">
                                 <div class="container_product">
-                                    <img style="width:120px;height:120px;" src="<?= $row->image ? base_url("/images/product/$row->image") : base_url("/images/product/no_image_prduct.png") ?>" alt="" class="card-img-top image_product">
+                                    <img style="height:120px;" src="<?= $row->image ? base_url("/images/product/$row->image") : base_url("/images/product/no_image_prduct.png") ?>" alt="" class="card-img-top image_product">
                                     <div class="middle_product">
                                         <h5 class="title_product text-center hr_product"><?= $row->product_title ?></h5>
                                         <p class="desc_product" style="font-size: 14px;"><?= $row->description ?></p>
@@ -99,7 +99,13 @@
 
                                     <div class="tooltips">
                                         <h5 class="card-title" style="font-size: 14px">
-                                            <?= substr_replace($row->product_title, '', 23) ?>
+
+                                            <?php if (strlen($row->product_title) <= 25) {
+                                                echo $row->product_title;
+                                            } else {
+                                                echo substr($row->product_title, 0, 22) . '...';
+                                            } ?>
+
                                         </h5>
                                         <div class="top">
                                             <span><?= $row->product_title ?></span>
@@ -125,7 +131,7 @@
                                             <button class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Detail Produk">
                                                 <i class="fas fa-eye"></i>
                                             </button>
-                                            <input type="number" name="qty" value="0" data-toggle="tooltip" data-placement="bottom" title="Masukan jumlah order" class="form-control">
+                                            <input type="number" name="qty" placeholder="order" data-toggle="tooltip" data-placement="bottom" title="Masukan jumlah order" class="form-control">
                                             <div class="input-group-append">
                                                 <button class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Tambah Kedalam Keranjang">
                                                     <i class="fas fa-cart-plus"></i>
@@ -139,12 +145,11 @@
                     <?php endforeach ?>
                 </div>
             </div>
-
         </div>
     </div>
+    <div class="card-footer bg-warning">
+        <nav aria-label="Page navigation example">
+            <?= $pagination ?>
+        </nav>
+    </div>
 </main>
-<div class="card-footer bg-warning">
-    <nav aria-label="Page navigation example">
-        <?= $pagination ?>
-    </nav>
-</div>

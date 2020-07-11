@@ -35,6 +35,11 @@ class Profile_model extends MY_Model
 				'rules'	=> 'trim|required'
 			],
 			[
+				'field'	=> 'no_tlp',
+				'label'	=> 'No Tlp',
+				'rules'	=> 'trim|required|numeric|max_length[15]'
+			],
+			[
 				'field'	=> 'alamat',
 				'label'	=> 'Alamat',
 				'rules'	=> 'trim|required'

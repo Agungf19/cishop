@@ -35,7 +35,7 @@ class Home extends MY_Controller
         $data['pagination'] = $this->home->makePagination(base_url('home'), 2, $data['total_rows']);
         $data['page']       = 'pages/home/index';                                                     //meload index.php ada di view, data bentuk string
 
-        $this->view($data); //agar contenya dinamis
+        $this->view($data); //agar contentya dinamis
     }
 }
 
